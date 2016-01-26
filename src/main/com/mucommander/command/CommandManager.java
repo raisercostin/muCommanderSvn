@@ -69,6 +69,7 @@ public class CommandManager implements CommandBuilder {
 
 
 
+
     // - Self-open command -----------------------------------------------------
     // -------------------------------------------------------------------------
     /** Alias of the 'run as executable' command. */

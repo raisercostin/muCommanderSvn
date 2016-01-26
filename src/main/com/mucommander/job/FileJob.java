@@ -182,26 +182,13 @@ public abstract class FileJob implements Runnable {
      */
     public FileJob(MainFrame mainFrame, FileSet files) {
         this.mainFrame = mainFrame;
-        this.files = files;
-        this.nbFiles = files.size();
-        this.baseSourceFolder = files.getBaseFolder();
+        setFiles(files);
+    	this.jobProgress = new JobProgress(this);
+    }
 
-        // Create CachedFile instances around the source files in order to cache the return value of frequently accessed
-        // methods. This eliminates some I/O, at the (small) cost of a bit more CPU and memory. Recursion is enabled
-        // so that children and parents of the files are also cached.
-        // Note: When cached methods are called, they no longer reflect changes in the underlying files. In particular,
-        // changes of size or date could potentially not be reflected when files are being processed but this should
-        // not really present a risk. 
-        AbstractFile tempFile;
-        for(int i=0; i<nbFiles; i++) {
-            tempFile = files.elementAt(i);
-            files.setElementAt((tempFile instanceof CachedFile)?tempFile:new CachedFile(tempFile, true), i);
-        }
-
-        if (this.baseSourceFolder!=null)
-            this.baseSourceFolder = (getBaseSourceFolder() instanceof CachedFile)?getBaseSourceFolder():new CachedFile(getBaseSourceFolder(), true);
-
-    	this.jobProgress = new JobProgress(this);    
+    public FileJob(MainFrame mainFrame) {
+        this.mainFrame = mainFrame;
+        this.jobProgress = new JobProgress(this);
     }
 	
 	
@@ -751,6 +738,28 @@ public abstract class FileJob implements Runnable {
      */
     protected void setNbFiles(int nbFiles) {
     	this.nbFiles = nbFiles;
+    }
+
+    public void setFiles(FileSet files) {
+        this.files = files;
+        this.nbFiles = files.size();
+        this.baseSourceFolder = files.getBaseFolder();
+
+        // Create CachedFile instances around the source files in order to cache the return value of frequently accessed
+        // methods. This eliminates some I/O, at the (small) cost of a bit more CPU and memory. Recursion is enabled
+        // so that children and parents of the files are also cached.
+        // Note: When cached methods are called, they no longer reflect changes in the underlying files. In particular,
+        // changes of size or date could potentially not be reflected when files are being processed but this should
+        // not really present a risk.
+        AbstractFile tempFile;
+        for (int i=0; i<nbFiles; i++) {
+            tempFile = files.elementAt(i);
+            files.setElementAt((tempFile instanceof CachedFile)?tempFile:new CachedFile(tempFile, true), i);
+        }
+
+        if (this.baseSourceFolder != null) {
+            this.baseSourceFolder = (getBaseSourceFolder() instanceof CachedFile)?getBaseSourceFolder():new CachedFile(getBaseSourceFolder(), true);
+        }
     }
 
     /**

@@ -7,22 +7,20 @@
 <ivysettings>
     <!-- = Configuration =========================================================================================== -->
     <!-- =========================================================================================================== -->
-    <property name="repo.uri"  value="http://ivy.mucommander.com/"/>
-    <property name="nexus.uri" value="http://nexus-mucommander.rhcloud.com/nexus/content/groups/mucommander"/>
+    <property name="repo.uri" value="http://ivy.mucommander.com/"/>
 
 
     <!-- = muCommander Repository ================================================================================== -->
     <!-- =========================================================================================================== -->
     <resolvers>
-      <chain name="mucommander-repos" returnFirst="true">
-        <url name="mucommander-nexus">
-          <artifact pattern="${nexus.uri}/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" />
-        </url>
-        <url name="mucommander-ivy">
-          <ivy      pattern="${repo.uri}/[organisation]/[module]/[revision]/ivy.xml" />
-          <artifact pattern="${repo.uri}/[organisation]/[module]/[revision]/[artifact].[ext]" />
-        </url>
-      </chain>
+        <chain name="chain">
+            <ibiblio name="central" m2compatible="true"/>
+            <url name="mucommander-ivy">
+                <ivy      pattern="${repo.uri}/[organisation]/[module]/[revision]/ivy.xml" />
+                <artifact pattern="${repo.uri}/[organisation]/[module]/[revision]/[artifact].[ext]" />
+            </url>
+
+        </chain>
     </resolvers>
-    <settings defaultResolver="mucommander-repos"/>
+    <settings defaultResolver="chain"/>     <!--   <settings defaultResolver="mucommander-ivy"/> -->
 </ivysettings>

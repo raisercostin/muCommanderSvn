@@ -118,6 +118,8 @@ public class FolderPanel extends JPanel implements FocusListener, QuickListConta
      * Constructor
      * 
      * @param mainFrame - the MainFrame that contains this panel
+     * @param initialTabs
+     * @param indexOfSelectedTab
      * @param initialFolders - the initial folders displayed at this panel's tabs
      * @param conf - configuration for this panel's file table
      */

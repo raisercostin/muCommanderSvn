@@ -132,6 +132,12 @@ public class FocusDialog extends JDialog implements WindowListener {
     }
 
 
+    @Override
+    public void dispose() {
+        saveState();
+        super.dispose();
+    }
+
     /**
      * Sets the component that will receive focus once this dialog has been made visible.
      *
@@ -255,5 +261,9 @@ public class FocusDialog extends JDialog implements WindowListener {
     }
 
     public void windowDeiconified(WindowEvent e) {
+    }
+
+    protected void saveState() {
+
     }
 }

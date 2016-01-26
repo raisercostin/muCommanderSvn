@@ -159,6 +159,7 @@ public class AboutDialog extends FocusDialog implements ActionListener {
             insertNormalString(doc,   "Alejandro Scandroli");
             insertNormalString(doc,   "Alexander Yerenkow");
             insertNormalString(doc,   "Johann Schmitz");
+            insertNormalString(doc,   "Oleg Trifonov");
             insertLineBreak(doc);
 
             // QA

@@ -1,9 +1,6 @@
 package com.mucommander.ui.viewer;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Frame;
-import java.awt.Image;
+import java.awt.*;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -102,7 +99,9 @@ public abstract class FileFrame extends JFrame {
         contentPane.add(asyncPanel, BorderLayout.CENTER);
         setContentPane(contentPane);
 
-        setSize(WAIT_DIALOG_SIZE);
+        //setSize(WAIT_DIALOG_SIZE);
+        //setFullScreenSize();
+        setFullScreen(true);
         DialogToolkit.centerOnWindow(this, mainFrame);
 
         setVisible(true);
@@ -133,6 +132,8 @@ public abstract class FileFrame extends JFrame {
     // Overridden methods //
     ////////////////////////
 
+
+
     @Override
     public void pack() {
     	if (!isFullScreen()) {
@@ -144,7 +145,8 @@ public abstract class FileFrame extends JFrame {
     		DialogToolkit.centerOnWindow(this, mainFrame);
     	}
     }
-    
+
+
     //////////////////////
     // Abstract methods //
     //////////////////////

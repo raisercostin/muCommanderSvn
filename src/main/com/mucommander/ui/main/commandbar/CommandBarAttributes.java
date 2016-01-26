@@ -40,6 +40,7 @@ public class CommandBarAttributes {
     /** Command bar default actions */
     private static final String DEFAULT_ACTION_IDS[] = 
     {
+        com.mucommander.ui.action.impl.TerminalAction.Descriptor.ACTION_ID,
     	com.mucommander.ui.action.impl.ViewAction.Descriptor.ACTION_ID,
     	com.mucommander.ui.action.impl.EditAction.Descriptor.ACTION_ID,
     	com.mucommander.ui.action.impl.CopyAction.Descriptor.ACTION_ID,
@@ -52,6 +53,7 @@ public class CommandBarAttributes {
     /** Command bar default alternate actions */
     private static final String DEFAULT_ALTERNATE_ACTION_IDS[] =
     {
+        null,
     	null,
     	null,
     	com.mucommander.ui.action.impl.LocalCopyAction.Descriptor.ACTION_ID,

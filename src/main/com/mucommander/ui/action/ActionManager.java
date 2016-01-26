@@ -229,6 +229,8 @@ public class ActionManager {
     	registerAction(new UnmarkGroupAction.Descriptor(),            		new UnmarkGroupAction.Factory());
     	registerAction(new UnpackAction.Descriptor(),             			new UnpackAction.Factory());
     	registerAction(new ViewAction.Descriptor(),              			new ViewAction.Factory());
+        registerAction(new TerminalAction.Descriptor(),                     new TerminalAction.Factory());
+        registerAction(new FindFileAction.Descriptor(),                     new FindFileAction.Factory());
 
     	// register "open with" commands as actions, to allow for keyboard shortcuts for them
     	for (Command command : CommandManager.commands()) {
